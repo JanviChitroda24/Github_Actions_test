@@ -1,6 +1,10 @@
 name: Shell Commands
 
-on: [push]
+on: 
+  # [push]
+  schedule:
+    - cron: 0/5 * * * *
+    - cron: 0 1 * * * 
 
 jobs: 
   run-shell-command:
