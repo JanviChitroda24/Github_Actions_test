@@ -2,9 +2,12 @@ name: Shell Commands
 
 on: 
   # [push]
-  schedule:
-    - cron: 0/5 * * * *
-    - cron: 0 1 * * * 
+  #schedule:
+  #  - cron: 0/5 * * * *
+  #  - cron: 0 1 * * * 
+
+  repository_dispatch:
+    types: [build]
 
 jobs: 
   run-shell-command:
