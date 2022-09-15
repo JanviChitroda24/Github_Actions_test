@@ -14,9 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: payload
-        run: "${{ github.event.client_payload.env }}"
+        run: echo ${{ github.event.client_payload.env }}
+
       - name: echo a string
         run: echo "Hello World"
+
       - name: multiline script
         run: |
           node -v
