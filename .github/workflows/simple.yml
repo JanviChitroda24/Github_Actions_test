@@ -13,6 +13,8 @@ jobs:
   run-shell-command:
     runs-on: ubuntu-latest
     steps:
+      - name: payload
+        run: "${{ github.event.client_payload.env }}"
       - name: echo a string
         run: echo "Hello World"
       - name: multiline script
@@ -28,7 +30,7 @@ jobs:
 
   run-windows-command:
     runs-on: windows-latest
-    needs: ["run-shell-command"]
+    #needs: ["run-shell-command"]
     steps: 
       - name: Directory Powershell
         run: Get-Location
