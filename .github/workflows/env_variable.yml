@@ -24,7 +24,7 @@ jobs:
           echo "JOB_ENV: ${JOB_ENV}"
           echo "STEP_ENV: ${STEP_ENV}"
           echo "${{ github.ref_name }}"
-          echo "${{ secrets.MY_SECRET }}"
+          echo "MY SECRET: ${{ secrets.MY_SECRET }}"
 
   log-default-env:
     runs-on: ubuntu-latest
