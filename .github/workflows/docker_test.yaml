@@ -26,5 +26,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          push: true
+          load: true
           tags: janvichitroda24/github_actions_test/app:latest
