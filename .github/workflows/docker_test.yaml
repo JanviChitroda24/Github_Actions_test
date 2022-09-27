@@ -27,4 +27,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: github_actions_test/app:latest
+          tags: janvichitroda24/github_actions_test/app:latest
