@@ -22,10 +22,10 @@ jobs:
           Error: 1 chart(s) linted, 1 chart(s) failed" > temp.txt
           IFS=$'\n' read -d '' -r -a lines < temp.txt
           export varii=$(echo "${lines[-1]}")
-          $varri=${varii:19:1}
+          $varii=${varii:19:1}
 
       -
         name: Display Variable
         run: |
-          echo $varri
+          echo $varii
 
