@@ -5,8 +5,6 @@ on: push
 jobs:
   steps_testing:
     runs-on: ubuntu-latest
-    env:
-      Check: None
     steps:
       -
         name: Checkout
@@ -16,7 +14,10 @@ jobs:
         name: Create Env Variable
         run: |
           cat > temp.txt
-          echo "Hello"
+          echo "Hellooo World uhgeai oihgifzshergtoirjhoirj  rgnjdzgni;rohigtuighrnkbjrdnez;gioreiojirrnn()ujfilzerngkr" > temp.txt
+          IFS=$'\n' read -d '' -r -a lines < temp.txt
+          export varii=$(echo "${lines[-1]}")
+
       -
         name: Display Variable
         run: |
