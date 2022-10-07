@@ -14,14 +14,17 @@ jobs:
         name: Create Env Variable
         run: |
           cat > temp.txt
-          echo "Hellooo World uhgeai\n oihgifzshergtoirjhoirj  rgnjdzgni \n ;rohigtuighrnkbjrdnez;gioreiojirrnn()ujfilzerngkr \n seiufwe" > temp.txt
+          echo "==> Linting dependencytest/
+          [INFO] Chart.yaml: icon is recommended
+          [ERROR] templates/deployment.yaml: unable to parse YAML: error converting YAML to JSON: yaml: line 10: mapping values are not allowed in this context
+          Error: 1 chart(s) linted, 1 chart(s) failed" > temp.txt
           export varii=$(echo "helloooooooooooo")
           arr=()
           while IFS= read -r line; do
             arr+=("$line")
           done <temp.txt
           echo "${arr[*]}"
-
+          echo "${arr[0]}"
 
       -
         name: Display Variable
