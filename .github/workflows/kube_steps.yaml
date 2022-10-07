@@ -16,7 +16,7 @@ jobs:
           cat > temp.txt
           echo "Hellooo World uhgeai oihgifzshergtoirjhoirj  rgnjdzgni;rohigtuighrnkbjrdnez;gioreiojirrnn()ujfilzerngkr" > temp.txt
           export varii=$(echo "helloooooooooooo")
-          IFS=$'\n' read -d '' -r -a lines < temp.txt
+          IFS=$'\n' read -d '' -r -a lines < ./temp.txt
           echo $lines
           echo $varii
           cat temp.txt
