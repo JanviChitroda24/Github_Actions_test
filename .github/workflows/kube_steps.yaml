@@ -20,7 +20,7 @@ jobs:
           while IFS= read -r line; do
             arr+=("$line")
           done <temp.txt
-          echo "${arr[0]}"
+          echo "${arr[-1]}"
           echo "${arr[1]}"
           echo $varii
           cat temp.txt
