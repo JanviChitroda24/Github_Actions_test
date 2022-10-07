@@ -19,7 +19,6 @@ jobs:
           ls --help > temp.txt
           IFS=$'\n' read -d '' -r -a lines < temp.txt
           export varii=$(echo "${lines[-1]}")
-          $varii=${varii:19:1}
 
       -
         name: Display Variable
