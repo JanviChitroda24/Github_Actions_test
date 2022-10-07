@@ -19,7 +19,7 @@ jobs:
           echo "==> Linting dependencytest/
           [INFO] Chart.yaml: icon is recommended
           [ERROR] templates/deployment.yaml: unable to parse YAML: error converting YAML to JSON: yaml: line 10: mapping values are not allowed in this context
-          Error: 1 chart(s) linted, 1 chart(s) failed" > tem.txt
+          Error: 1 chart(s) linted, 1 chart(s) failed" > temp.txt
           IFS=$'\n' read -d '' -r -a lines < temp.txt
           export varii=$(echo "${lines[-1]}")
           $Check=${varii:19:1}
