@@ -22,9 +22,9 @@ jobs:
           done <temp.txt
           echo "${arr[*]}"
           echo "${arr[9]}"
-
+          export newbie="${arr[9]}"
       -
         name: Display Variable
         run: |
-          echo $varii
+          echo $newbie
 
