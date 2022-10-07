@@ -14,11 +14,14 @@ jobs:
         name: Create Env Variable
         run: |
           cat > temp.txt
-          echo "Hellooo World uhgeai oihgifzshergtoirjhoirj  rgnjdzgni;rohigtuighrnkbjrdnez;gioreiojirrnn()ujfilzerngkr \n seiufwe" > temp.txt
+          echo "Hellooo World uhgeai\n oihgifzshergtoirjhoirj  rgnjdzgni \n ;rohigtuighrnkbjrdnez;gioreiojirrnn()ujfilzerngkr \n seiufwe" > temp.txt
           export varii=$(echo "helloooooooooooo")
-          readarray -t Arr < temp.txt
-          echo "${Arr[0]}"
-          echo "${Arr[1]}"
+          arr=()
+          while IFS= read -r line; do
+            arr+=("$line")
+          done <temp.txt
+          echo "${arr[0]}"
+          echo "${arr[1]}"
           echo $varii
           cat temp.txt
 
