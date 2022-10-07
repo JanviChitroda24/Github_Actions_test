@@ -1,0 +1,30 @@
+name: steps_test
+
+on: push
+
+jobs:
+  steps_testing:
+    runs-on: ubuntu-latest
+    env:
+      Check: None
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+
+      -
+        name: Create Env Variable
+        run: |
+          echo "==> Linting dependencytest/
+          [INFO] Chart.yaml: icon is recommended
+          [ERROR] templates/deployment.yaml: unable to parse YAML: error converting YAML to JSON: yaml: line 10: mapping values are not allowed in this context
+          Error: 1 chart(s) linted, 1 chart(s) failed" > tem.txt
+          IFS=$'\n' read -d '' -r -a lines < temp.txt
+          export varii=$(echo "${lines[-1]}")
+          $Check=${varii:19:1}
+
+      -
+        name: Display Variable
+        run: |
+          echo $Check
+
