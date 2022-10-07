@@ -16,10 +16,7 @@ jobs:
         name: Create Env Variable
         run: |
           cat > temp.txt
-          ls --help > temp.txt
-          IFS=$'\n' read -d '' -r -a lines < temp.txt
-          export varii=$(echo "${lines[-1]}")
-
+          echo "Hello"
       -
         name: Display Variable
         run: |
