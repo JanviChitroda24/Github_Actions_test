@@ -1,5 +1,5 @@
 name: ENV VARIABLES
-on: push
+on: workflow_dispatch
 env:
   WORKFLOW_ENV: Available to all Jobs
 
