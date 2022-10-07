@@ -13,8 +13,11 @@ jobs:
       -
         name: Create Env Variable
         run: |
+          cat > temp.txt
+          echo "Hellooo World uhgeai oihgifzshergtoirjhoirj  rgnjdzgni;rohigtuighrnkbjrdnez;gioreiojirrnn()ujfilzerngkr" > temp.txt
           export varii=$(echo "helloooooooooooo")
           echo $varii
+          cat temp.txt
 
       -
         name: Display Variable
