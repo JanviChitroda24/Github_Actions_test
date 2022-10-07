@@ -15,6 +15,7 @@ jobs:
       -
         name: Create Env Variable
         run: |
+          mkdir temp.txt
           echo "==> Linting dependencytest/
           [INFO] Chart.yaml: icon is recommended
           [ERROR] templates/deployment.yaml: unable to parse YAML: error converting YAML to JSON: yaml: line 10: mapping values are not allowed in this context
