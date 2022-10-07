@@ -13,10 +13,7 @@ jobs:
       -
         name: Create Env Variable
         run: |
-          cat > temp.txt
-          echo "Hellooo World uhgeai oihgifzshergtoirjhoirj  rgnjdzgni;rohigtuighrnkbjrdnez;gioreiojirrnn()ujfilzerngkr" > temp.txt
-          IFS=$'\n' read -d '' -r -a lines < temp.txt
-          export varii=$(echo "${lines[-1]}")
+          export varii=$(echo "helloooooooooooo")
 
       -
         name: Display Variable
