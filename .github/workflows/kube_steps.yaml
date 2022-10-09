@@ -24,8 +24,9 @@ jobs:
             done <temp.txt
             export vari="${arr[0]}"
             echo "$vari"
+            echo "${vari:3:1}"
             echo "${arr[9]}"
-            echo "newbie=${vari[3]}" >> $GITHUB_ENV
+            echo "newbie=${vari:3:1}" >> $GITHUB_ENV
       -
         name: Display Variable
         run: |
