@@ -27,6 +27,7 @@ jobs:
             echo "${vari:3:1}"
             echo "${arr[9]}"
             echo "newbie=${vari:3:1}" >> $GITHUB_ENV
+            rm temp.txt
       -
         name: Display Variable
         run: |
