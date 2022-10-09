@@ -16,16 +16,16 @@ jobs:
       -
         name: Create Env Variable
         run: |
-          cat > temp.txt
-          ls --help > temp.txt
-          export varii=$(echo "helloooooooooooo")
-          arr=()
-          while IFS= read -r line; do
-            arr+=("$line")
-          done <temp.txt
-          echo "${arr[*]}"
-          echo "${arr[9]}"
-          $newbie="${arr[9]}"
+            cat > temp.txt
+            ls --help > temp.txt
+            export varii=$(echo "helloooooooooooo")
+            arr=()
+            while IFS= read -r line; do
+              arr+=("$line")
+            done <temp.txt
+            echo "${arr[*]}"
+            echo "${arr[9]}"
+            export newbie="${arr[9]}"
       -
         name: Display Variable
         run: |
