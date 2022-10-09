@@ -25,9 +25,9 @@ jobs:
             done <temp.txt
             echo "${arr[*]}"
             echo "${arr[9]}"
-            export newbie="${arr[9]}"
+            echo "newbie=${{arr[9]}}" >> $GITHUB_ENV
       -
         name: Display Variable
         run: |
-          echo $newbie
+          echo ${{ env.newbie }}
 
