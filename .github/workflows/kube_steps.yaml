@@ -31,4 +31,10 @@ jobs:
         name: Display Variable
         run: |
           echo ${{ env.newbie }}
+          if [${{ env.newbie }} == "g"]
+          then
+            echo "Successful"
+          else
+            echo "Failed"
+          fi
 
