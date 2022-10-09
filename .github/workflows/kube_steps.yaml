@@ -33,9 +33,9 @@ jobs:
           echo ${{ env.newbie }}
           if [[ "${{ env.newbie }}" == "g" ]]; then
             echo "Successful"
-            exit 1
           else
             echo "Failed"
+            exit 1
           fi
 
       - name: This step should skipped
