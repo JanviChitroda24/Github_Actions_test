@@ -22,7 +22,7 @@ jobs:
             while IFS= read -r line; do
               arr+=("$line")
             done <temp.txt
-            export vari="${arr[*]}"
+            export vari="${arr[0]}"
             echo "$vari"
             echo "${arr[9]}"
             echo "newbie=${arr[9]}" >> $GITHUB_ENV
