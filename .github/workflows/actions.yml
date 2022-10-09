@@ -1,14 +1,6 @@
 name: Actions Workflow
 
 on: workflow_dispatch
-  #push:
-
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - closed
-      - assigned
 
 jobs:
   run-github-actions:
