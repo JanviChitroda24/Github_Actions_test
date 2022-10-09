@@ -33,7 +33,11 @@ jobs:
           echo ${{ env.newbie }}
           if [[ "${{ env.newbie }}" == "g" ]]; then
             echo "Successful"
+            exit 1
           else
             echo "Failed"
           fi
 
+      - name: This step should skipped
+        run: |
+          echo "Hi, This step should be skipped"
