@@ -18,12 +18,12 @@ jobs:
         run: |
             cat > temp.txt
             ls --help > temp.txt
-            export varii=$(echo "helloooooooooooo")
             arr=()
             while IFS= read -r line; do
               arr+=("$line")
             done <temp.txt
-            echo "${arr[*]}"
+            export vari="${arr[*]}"
+            echo "$vari"
             echo "${arr[9]}"
             echo "newbie=${arr[9]}" >> $GITHUB_ENV
       -
