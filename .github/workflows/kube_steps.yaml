@@ -25,7 +25,7 @@ jobs:
             export vari="${arr[0]}"
             echo "$vari"
             echo "${vari:3:1}"
-            echo "${arr[9]}"
+            echo "${arr[-1]}"
             echo "newbie=${vari:3:1}" >> $GITHUB_ENV
             rm temp.txt
       -
