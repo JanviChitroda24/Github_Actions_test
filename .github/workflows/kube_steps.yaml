@@ -31,7 +31,7 @@ jobs:
       -
         name: Display Variable
         run: |
-          echo "${curl http://www.google.co.in}"
+          echo "$(curl http://www.google.co.in)"
           echo ${{ env.newbie }}
           if [[ "${{ env.newbie }}" == "g" ]]; then
             echo "Successful"
