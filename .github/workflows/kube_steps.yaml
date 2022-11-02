@@ -31,8 +31,10 @@ jobs:
       -
         name: Display Variable
         run: |
+          echo "$(curl http://www.google.co.in)"
           result=$(curl http://www.google.co.in | tail -1)
           echo "health_check=${result}" >> $GITHUB_ENV
+          
           echo ${{ env.newbie }}
           if [[ "${{ env.newbie }}" == "g" ]]; then
             echo "Successful"
