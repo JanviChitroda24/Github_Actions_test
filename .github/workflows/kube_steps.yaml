@@ -23,9 +23,13 @@ jobs:
               arr+=("$line")
             done <temp.txt
             export vari="${arr[0]}"
+            echo "hi 0000000000000"
             echo "$vari"
+            echo "hi 1111111111111"
             echo "${vari:-3:-1}"
+            echo "hi 2222222222222"
             echo "${arr[-1]}"
+            echo "hi 3333333333333"
             echo "newbie=${vari:3:1}" >> $GITHUB_ENV
             rm temp.txt
       -
