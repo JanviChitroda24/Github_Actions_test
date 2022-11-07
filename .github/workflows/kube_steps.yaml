@@ -56,7 +56,7 @@ jobs:
         run: |
           varia='GNU/Linux is an operating system'
           echo ${varia: -2}
-          if [[ "${varia:-2}" == "em" ]]; then
+          if [[ "${varia: -2}" == "em" ]]; then
             echo "It's there."
           else
             echo "NO"
