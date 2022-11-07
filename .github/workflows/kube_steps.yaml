@@ -54,8 +54,10 @@ jobs:
 
       - name: New 
         run: |
-          VAR='GNU/Linux is an operating system'
-          echo ${VAR:-2}
-          if [[ "${VAR:-2}" == "em" ]]; then
+          varia='GNU/Linux is an operating system'
+          echo ${varia:-2}
+          if [[ "${varia:-2}" == "em" ]]; then
             echo "It's there."
+          else
+            echo "NO"
           fi
