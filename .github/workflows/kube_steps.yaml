@@ -51,3 +51,10 @@ jobs:
         run: |
           echo "${{ env.health_check }}"
           echo "Hi, This step should be skipped"
+
+      - name: New 
+        run: |
+          VAR='GNU/Linux is an operating system'
+          if [[ $VAR =~ .*system.* ]]; then
+            echo "It's there."
+          fi
