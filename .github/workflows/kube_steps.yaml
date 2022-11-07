@@ -55,6 +55,6 @@ jobs:
       - name: New 
         run: |
           VAR='GNU/Linux is an operating system'
-          if [[ $VAR =~ .*system.* ]]; then
+          if [[ $VAR =~ .*ok.* ]]; then
             echo "It's there."
           fi
