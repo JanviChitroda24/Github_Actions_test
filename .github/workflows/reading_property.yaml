@@ -12,7 +12,7 @@ jobs:
     # test 1
     - name: Read first property
       id: read_first_property
-      uses: ./
+      uses: ./test/
       with:
         path: './test/foo.properties'
         properties: 'foo'
