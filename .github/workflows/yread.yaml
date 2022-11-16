@@ -12,7 +12,7 @@ jobs:
         id: yaml-data
         uses: jbutcher5/read-yaml@main      # You may wish to replace main with a version tag such as '1.6' etc.
         with:
-          file: './yaml_read.yml'          # File to read from
+          file: './yaml_read.yaml'          # File to read from
           key-path: '["runs", "using"]' # Access the runs key then the using key and retuns the value.
 
       - name: Display read-yaml output
