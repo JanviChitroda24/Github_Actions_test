@@ -1,6 +1,10 @@
+FROM ubuntu:latest
 
+RUN apt update
+RUN apt install python3 -y
 
-FROM python:latest
-COPY read.py /usr/bin/
-RUN ln -s /usr/bin/read.py
-ENTRYPOINT ["./test/read.py"]
+WORKDIR /usr/appc/src
+
+COPY ready.py ./
+
+CMD ["python3", "./read.py"]
