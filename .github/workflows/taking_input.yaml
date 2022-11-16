@@ -1,4 +1,4 @@
-name: read_properties
+name: taking_input
 
 on: 
   workflow_dispatch:
