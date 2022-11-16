@@ -1,6 +1,6 @@
 name: steps_test
 
-on: push
+on: workflow_dispatch
 
 jobs:
   steps_testing:
