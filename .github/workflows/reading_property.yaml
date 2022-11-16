@@ -14,8 +14,8 @@ jobs:
       id: read_first_property
       uses: ./test/
       with:
-        entryPoint: './test/config.properties'
-        args: 'foo'
+        path: './test/config.properties'
+        properties: 'config'
 
     - name: Do something with the property value
       run: echo ${{ steps.read_first_property.outputs.foo }}
