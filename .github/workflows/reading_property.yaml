@@ -1,0 +1,25 @@
+name: read_properties
+
+on: push
+
+jobs:
+  steps_testing:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    # test 1
+    - name: Read first property
+      id: read_first_property
+      uses: ./
+      with:
+        path: './test/foo.properties'
+        properties: 'foo'
+
+    - name: Do something with the property value
+      run: echo ${{ steps.read_first_property.outputs.foo }}
+
+    - name: Verify first property has been read correctly
+      if: steps.read_first_property.outputs.foo != 'bar'
+      run: exit 1
