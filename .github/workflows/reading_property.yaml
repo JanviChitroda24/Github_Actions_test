@@ -22,4 +22,4 @@ jobs:
 
     - name: Verify first property has been read correctly
       if: steps.read_first_property.outputs.foo != 'bar'
-      run: exit 1
+      run: echo "hi"
