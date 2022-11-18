@@ -8,6 +8,10 @@ with open('config.properties', "r") as file:
         word = line.split("=", 1)
         print(word)
 
+foo=bar
+appname=zmgo-agjewk
+eskj=ekfl/dmsekf/fsmke/sdf=dckjsvnkew
+
 """
 import configparser
 
