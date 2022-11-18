@@ -1,4 +1,4 @@
-name: read_properties
+name: read_file
 
 on: push
 
