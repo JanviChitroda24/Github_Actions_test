@@ -1,6 +1,6 @@
 name: read_properties
 
-on: push
+on: workflow_dispatch
 
 jobs:
 
