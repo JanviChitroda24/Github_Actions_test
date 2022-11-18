@@ -1,6 +1,6 @@
 import os
 
-with open('./config.properties', "r") as file:
+with open('config.properties', "r") as file:
     data = file.readlines()
     for line in data:
         word = line.split("=", 1)
