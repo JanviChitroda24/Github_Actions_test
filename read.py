@@ -18,5 +18,6 @@ import configparser
 config = configparser.RawConfigParser()
 config.read('config.properties')
 print(config.sections())
-x=config.get('details', 'foo')
+appName=config.get('details', 'appName')
+healthCheck=config.get('details', 'healthCheck')
 print(x)
