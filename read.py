@@ -1,3 +1,5 @@
+
+"""
 import os
 
 with open('config.properties', "r") as file:
@@ -14,4 +16,3 @@ config.read('config.properties')
 print(config.sections())
 x=config.get('details', 'foo')
 print(x)
-"""
