@@ -6,9 +6,10 @@ with open('config.properties', "r") as file:
     data = file.readlines()
     for line in data:
         arr.append(line.split("=", 1))
+print(arr)
 with open(os.environ['GITHUB_OUTPUT'],'a') as fh:
-    for ind, val in enumerate(arr):
-        print(f'{arr[0]}={arr[1].strip()}',file=fh)
+    for val in enumerate(arr):
+        print(f'{val[0]={val[1].strip()}',file=fh)
 
 
 
