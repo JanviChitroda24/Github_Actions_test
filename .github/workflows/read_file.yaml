@@ -1,0 +1,17 @@
+name: read_properties
+
+on: push
+
+jobs:
+
+  steps_testing:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - uses: actions/setup-python@v4
+      with: 
+        python-version: '3.10'
+    
+    - run: python ./read.py
