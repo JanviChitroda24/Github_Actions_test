@@ -16,6 +16,6 @@ jobs:
     
     - name: Get config 
       id: getty
-      run: python ./read.py
+      run: python ./read.py >> $GITHUB_OUTPUT
 
     - run: echo "${{ steps.getty.outputs.foo }}"
