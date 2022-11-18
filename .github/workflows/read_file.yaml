@@ -1,6 +1,6 @@
 name: read_file
 
-on: push
+on: workflow_dispatch
 
 jobs:
 
