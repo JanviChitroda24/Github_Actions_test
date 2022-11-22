@@ -20,5 +20,5 @@ jobs:
 
     - run: |
         echo "${{ steps.getty.outputs.foo }}"
-        result=$(curl http://www.google.co.in | tail -1)
+        result=$(curl ${{ steps.getty.outputs.url }} | tail -1)
         echo $result
