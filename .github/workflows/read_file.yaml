@@ -18,4 +18,7 @@ jobs:
       id: getty
       run: python ./read.py 
 
-    - run: echo "${{ steps.getty.outputs.foo }}"
+    - run: |
+        echo "${{ steps.getty.outputs.foo }}"
+        result = $(curl https://www.google.co.in/)
+        echo $result
