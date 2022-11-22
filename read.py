@@ -10,8 +10,10 @@ print(arr)
 with open(os.environ['GITHUB_OUTPUT'],'a') as fh:
     for val in enumerate(arr):
         val2=str(val[1])
-        val2=val2.rstrip('\n')
-        print(f'{val[0]}={val2}',file=fh)
+        print(val2)
+        temp=val2.rstrip('\n')
+        print(temp)
+        print(f'{val[0]}={temp}',file=fh)
 
 
 
