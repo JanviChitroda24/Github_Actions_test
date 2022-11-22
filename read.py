@@ -9,7 +9,7 @@ with open('config.properties', "r") as file:
 print(arr)
 with open(os.environ['GITHUB_OUTPUT'],'a') as fh:
     for val in enumerate(arr):
-        val2=val[1]
+        val2=str(val[1])
         val2=val2.rstrip('\n')
         print(f'{val[0]}={val2}',file=fh)
 
