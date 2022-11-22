@@ -21,4 +21,4 @@ jobs:
     - run: |
         echo "${{ steps.getty.outputs.foo }}"
         result = $(curl https://www.google.co.in/)
-        echo ${result}
+        echo $result
