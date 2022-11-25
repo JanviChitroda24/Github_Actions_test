@@ -24,3 +24,4 @@ jobs:
         echo $result
         echo "${{ github.ref }}"
         echo "${{ github.ref_name }}"
+        echo "${{ github.action_ref }}"
