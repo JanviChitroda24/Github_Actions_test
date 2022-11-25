@@ -22,3 +22,5 @@ jobs:
         echo "${{ steps.getty.outputs.foo }}"
         result=$(curl ${{ steps.getty.outputs.url }} | tail -1)
         echo $result
+        echo "${{ github.ref }}"
+        echo "${{ github.ref_name }}"
