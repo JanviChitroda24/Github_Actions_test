@@ -33,4 +33,4 @@ jobs:
 
     - name: Writing in yaml 
       id: write_yaml
-      uses: python ./write.py 
+      run: python ./write.py 
