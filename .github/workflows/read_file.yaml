@@ -30,7 +30,4 @@ jobs:
         echo "${{ github.ref }}"
         echo "${{ github.ref_name }}"
         echo "${{ github.action_ref }}"
-
-    - name: Writing in yaml 
-      id: write_yaml
-      run: python ./write.py 
+        echo "${{ github.event.release.tag_name }}"
