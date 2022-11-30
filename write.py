@@ -6,3 +6,5 @@ with open('fruits.properties', "w") as file:
     fruits_list = yaml.load(file, Loader=yaml.FullLoader)
 
     print(fruits_list)
+    
+    

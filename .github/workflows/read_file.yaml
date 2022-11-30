@@ -24,6 +24,7 @@ jobs:
       run: python ./read.py 
 
     - run: |
+        pip install pyyaml
         echo "${{ steps.getty.outputs.foo }}"
         result=$(curl ${{ steps.getty.outputs.url }} | tail -1)
         echo $result
