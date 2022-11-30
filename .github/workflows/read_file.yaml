@@ -32,3 +32,7 @@ jobs:
         echo "${{ github.ref_name }}"
         echo "${{ github.action_ref }}"
         echo "${{ github.event.release.tag_name }}"
+
+    - name: Write 
+      id: writyyy
+      run: python ./write.py 
