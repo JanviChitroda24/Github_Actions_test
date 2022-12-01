@@ -12,8 +12,8 @@ jobs:
     - uses: actions/checkout@v1
 
     - run: |
-        echo "appName=fraud-transaction-mgmt" >> $GITHUB_ENV
-        echo "path=abcd\/efgh\/gvhj" >> $GITHUB_ENV
+        echo "'appName=fraud-transaction-mgmt'" >> $GITHUB_ENV
+        echo "path='abcd\/efgh\/gvhj'" >> $GITHUB_ENV
         echo "${{ env.appName }}"
         echo "${{ env.path }}"
 
