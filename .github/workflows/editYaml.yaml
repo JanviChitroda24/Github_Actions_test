@@ -5,7 +5,7 @@ on:
 
 jobs:
 
-  steps_testing:
+  edit_yaml_testing:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,17 +31,17 @@ jobs:
         then 
           appName=${{ steps.get_conf.outputs.appName }}"-"${{ github.ref_name }}"-"${{ steps.get_conf.outputs.version }}
           echo $appName
-          path="/api/"$appName"/"${{ steps.get_conf.outputs.version }}
+          path="/api/"${{ steps.get_conf.outputs.appName }}"/"${{ steps.get_conf.outputs.version }}
           echo $path
           fileName="./values2.yaml"
           echo $fileName
         else
           appName=${{ steps.get_conf.outputs.appName }}"-"${{ github.ref_name }}"-"${{ steps.get_conf.outputs.version }}"-ci"
-          path="/ci/api/"$appName"/"${{ steps.get_conf.outputs.version }}
-          fileName="./values3.yaml"
+          path="/ci/api/"${{ steps.get_conf.outputs.appName }}"/"${{ steps.get_conf.outputs.version }}
+          fileName="./values2.yaml"
         fi
         path="${path//\//\\/}"
         echo $path
-        sed -i "s/appName: .*/appName: $appname/1" $fileName
+        sed -i "s/appName: .*/appName: $appName/1" $fileName
         sed -i "s/path: .*/path: $path/1" $fileName
         sed -i "s/value: .*/value $path/2g" $fileName
