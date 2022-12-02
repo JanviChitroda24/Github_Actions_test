@@ -1,7 +1,7 @@
 name: edit_yaml
 
 on: 
-  workflow_dispatch
+  push
 
 jobs:
 
@@ -40,6 +40,8 @@ jobs:
           path="/ci/api/"$appName"/"${{ steps.get_conf.outputs.version }}
           fileName="./values3.yaml"
         fi
-        sed -i "s/appName:.*/appName: $appname/1" $fileName
-        sed -i "s/path:.*/path: $path/1" $fileName
-        sed -i "s/value:.*/value $path/2g" $fileName
+        path="${path//\//\\/}"
+        echo $path
+        sed -i "s/appName: .*/appName: $appname/1" $fileName
+        sed -i "s/path: .*/path: $path/1" $fileName
+        sed -i "s/value: .*/value $path/2g" $fileName
