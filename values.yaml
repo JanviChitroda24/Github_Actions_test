@@ -1,0 +1,12 @@
+appName: fraud-transaction-mgmt
+version: "1"
+
+deployment:
+  baseEnv:
+    - name: qwerrty
+      value: "qwerrty"
+    - name: okokok
+      value: "okokok"
+
+service:
+  path: /okokok/qwerttty
