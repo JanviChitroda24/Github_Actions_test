@@ -26,16 +26,19 @@ jobs:
       run: |
         env="dev"
         echo "environment=$env" >> $GITHUB_ENV
-
+        echo $env
         if [ $env == "dev" ]
         then 
           appName=${{ steps.get_conf.outputs.appName }}"-"$GITHUB_REF"-"${{ steps.get_conf.outputs.version }}
+          echo $appName
           path="\/api"$appName"\/"${{ steps.get_conf.outputs.version }}
-          filename="./values2.yaml"
+          echo $path
+          fileName="./values2.yaml"
+          echo $fileName
         else
           appName=${{ steps.get_conf.outputs.appName }}"-"$GITHUB_REF"-"${{ steps.get_conf.outputs.version }}"-ci"
           path="\/ci\/api\/"$appName"\/"${{ steps.get_conf.outputs.version }}
-          filename="./values3.yaml"
+          fileName="./values3.yaml"
         fi
         sed -i "s/appName:.*/appName: $appname/1" $fileName
         sed -i "s/path: .*/path: $path/1" $fileName
