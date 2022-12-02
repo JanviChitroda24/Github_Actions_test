@@ -29,17 +29,17 @@ jobs:
         echo $env
         if [ $env == "dev" ]
         then 
-          appName=${{ steps.get_conf.outputs.appName }}"-"$GITHUB_REF"-"${{ steps.get_conf.outputs.version }}
+          appName=${{ steps.get_conf.outputs.appName }}"-"${{ github.ref_name }}"-"${{ steps.get_conf.outputs.version }}
           echo $appName
-          path="\/api"$appName"\/"${{ steps.get_conf.outputs.version }}
+          path="/api/"$appName"/"${{ steps.get_conf.outputs.version }}
           echo $path
           fileName="./values2.yaml"
           echo $fileName
         else
-          appName=${{ steps.get_conf.outputs.appName }}"-"$GITHUB_REF"-"${{ steps.get_conf.outputs.version }}"-ci"
-          path="\/ci\/api\/"$appName"\/"${{ steps.get_conf.outputs.version }}
+          appName=${{ steps.get_conf.outputs.appName }}"-"${{ github.ref_name }}"-"${{ steps.get_conf.outputs.version }}"-ci"
+          path="/ci/api/"$appName"/"${{ steps.get_conf.outputs.version }}
           fileName="./values3.yaml"
         fi
         sed -i "s/appName:.*/appName: $appname/1" $fileName
-        sed -i "s/path: .*/path: $path/1" $fileName
-        sed -i "s/value: .*/value $path/2g" $fileName
+        sed -i "s/path:.*/path: $path/1" $fileName
+        sed -i "s/value:.*/value $path/2g" $fileName
