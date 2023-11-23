@@ -1,0 +1,360 @@
+Section 1 to 4:
+	https://github.com/alialaa/github-actions-course
+	
+Sction 4,5:
+	https://github.com/alialaa/github-actions-course-react
+	
+https://github.com/actions/checkout#usage
+
+dockerhub token --> dckr_pat_BTxib66Y_A_MQWIlYpT-ggIQk9o
+
+Github Actions:
+	Tools that let you automate your software development workflows
+	You can write individual tasks, called actions, and combine them to create custom workflows
+	
+	
+	Best way to supercharge your workflow
+		Enables you to create custom SDL workflows directly in your github repo
+		Fully integrated into github
+	
+Workflows:
+	Custom automated processes that you can set up in your repositry to build, test, package, release or deploy any code on github
+
+Introduction:
+	Event:
+		It can be push or pull request opened or an event opened or closed 
+		or anything that can happen to Github Repository
+		
+	Workflow:
+		When event happens they trigger a workflow to run
+		Workflow can run based on some regular schedule or based on some external event
+		
+	Job:
+		A workflow contains one job or more and each job has some steps.
+		A step step can perform some actions
+	
+	Actions:
+		eg: testing code deploying code, it can also run some shell commands.
+		Workflow will run on Virtual Environment provided by Github
+		
+	Runners:
+		Any machine with Github Actions runner applications installed 
+		Responsible for running jobs when events happpens and display back the results
+		
+		Github-hosted runners:
+			Linux, Windows or MacOS virtual environments with commonly used pre-installed software
+			Maintained by Github
+			We cannot customize hardware configuration
+		
+		Self-hosted runners:
+			Machine you manage and maintain with the runner application installed 
+			You have more control over the hardware, OS, software tools than Github hosted runners provide
+			
+
+Writing in YAML format:
+	It is data serialization language (similar to JSON)
+	
+	git init
+	git remote add origin git@github.com:JanviChitroda24/Github_Actions_test.git
+	git remote -v
+	
+	
+	
+	
+simple.yml
+	git init
+	git remote add origin git@github.com:JanviChitroda24/Github_Actions_test.git
+	git remote -v
+	git add -A
+	git commit -m"first workflow"
+	
+		ssh-keygen -t rsa -b 4096 -C janvichitroda0824@gmail.com
+			Enter for file
+			Enter the passphrase (passy)
+		eval `ssh-agent -s`
+		ssh-add ~/.ssh/id_rsa
+			enter the passphrase
+			
+			
+	git push --set-upstream origin master
+		
+		
+	github_repo --> actions --> all workflows --> select the workflow --> do run-shell-command
+		
+		After run-shell command we see that there are 2 additional steps
+		First and Last steps are created by Github	
+		
+	When the job has been done you can choose to get notifications:
+		Settings --> Notifications --> Actions(We can even choose notifications on failure/success)
+
+	Lets try to delibrately fail the job:
+		like by changing echo to eccho
+		
+			git add -A
+			git commit -m"Delibrate Failure"
+			git push
+			
+		We see that if one job fails then the next job wont run and it will directly complete the job
+		We can also search for logs(Eg exit code 127)
+		
+		Artifacts:
+			It is file generatede by your job
+			If you are running some tests and these tests produce result, you can make the results downloadable here 
+			do ----> Download log archive
+			
+		For More Logs:
+			Goto Settings --> Secrets --> Actions 
+				New Repositry Secret
+					ACTIONS_RUNNER_DEBUG
+						true
+					ACTIONS_STEP_DEBUG
+						true
+						
+			It is extra informationa and too noisy and new files are added to artifacts as well
+		
+
+Using different shells for each steps
+	bash, pwsh, python
+	
+	eg:
+		- name: python command
+		  run: |
+		    import platform 
+			print(platform.processor())
+		  shell: python
+		  
+	git add -A
+	git commit -m"Python shell"
+	
+Running 2 jobs in parallel:
+	Directly list the job below the other
+	jobs:
+	  job1_name:
+	    runs-on:
+		steps:
+		  - name: step_1
+		    run: command_1
+		  - name: step_2
+		    run: |
+			  commands_1
+			  commands_2
+	  job2_name:
+	    runs_on:
+		  steps:
+			- name: step_1
+			  run: command
+			  
+Running two jobs in series:
+	Add the following command after runs-on of the job we want to run second 
+	eg:
+		needs: ["job1_name"]
+		
+Simple Github Actions:
+	instead of run we can have uses:
+		it uses another Github repo
+		/Username/Reponame/(we can reference specific commit, branch[like master] and version)
+
+The Checkout Action:
+	when we do ls
+		by default github will not clone your repositry into your working directory
+		this is beacause not all workflows will use files and repositry
+		
+		uses: actions/checkout
+			It will authenticate with your repositry and then fetch the code and checkout into commit that triggered this workflow to run
+	
+	Some environment variables:
+	$GITHUB_SHA
+		#commit ID of specific commit that triggered the workflow
+	$GITHUB_REPOSITRY
+		#username and the repositry name
+	$GITHUB_WORKSPACE
+		#workspace directory (pwd)
+	echo "{{ github.token }}"
+		# token used to authenticate with github repo
+	
+	# git clone git@github:$GITHUB_REPOSITRY --> we need to put somewhere in URL (Not accurate)
+	# git checkout $GITHUB_SHA
+	
+Other ways you can trigger a workflow to run:
+	
+Triggering a Workflow with Github Events and Activity Types:
+	pull-request
+		on: [push, pull_request]
+		one of the events that you may use frequently 
+		When you work on project with other people and somebody creates a pull request, we will run some test first before merging.
+		It will not run on open and reopended and synchronize
+		
+	Create a new branch:
+		git checkout -b develop
+		git add -A
+		git commit -m"New branch"
+		git push --set-upstream origin develop
+		
+Setting a schedule to Trigger Workflow:
+	on:
+	  schedule:
+	    - cron: "1 2 3 4 5"
+			--> 1: minutes 
+				2: hours
+				3: day of month
+				4: month
+				5: day of the week
+				*: any value
+				The shortest interval you can run scheduled workflows is 5 minutes
+				refer crontab guru for better idea
+				
+	example:
+		1 * * * *
+			it will run every minute every hour
+			(12:01, 13:01, 14:01, ....)
+			
+		1,2 * * * *
+			it will run at minute 1 and 2 every hour
+			(12:01, 12:02,  13:01, 13:02, 14:01, 14:02....)
+			
+		1-3 * * * * 
+			in range of 1 to 3
+			it will run every 1, 2 and 3 minute of hour
+			(12:01, 12:02, 12:03, 13:01, 13:02, 13:03, 14:01, 14:02, 14:03....)
+			
+		0/15 * * * * 
+			step starting from 0 to 15
+			(12:30, 12:45, 13:00, 13:15, 13:30...)
+			____Minimum you can put 0/5 like you cannot go for every 2 minutes or 4 minutes_____
+			
+		0 12 * * *
+			it will run at 12:00 of every day
+			
+		0 12 1 * * 
+			At 12:00 at 1st day of the month
+			
+		0 12 1 1 * 
+			At 12:00 at 1st day of the month in January	
+			
+		0 12 * 1 * 
+			At 12:00 at on Sundays in January	
+			
+	We can use JAN, FEB,... also SUN,MON,..
+	
+Triggering Workflows Manually using the Repositry Dispatch Event:
+	In postman --> 
+		post request to:
+			https://api.github.com/repos/alialaa/github_actions_test/dispatches
+			https://api.github.com/repos/JanviChitroda24/Github_Actions_test/dispatches
+		In headers:
+			key: Accept
+			Value: application/vnd.github.everest-preview+json
+			
+			key: Content-Type
+			Value: application/json
+			
+		In Body:
+			raw, 
+			JSON
+				{
+					"event_type": "build"
+				}
+				
+	In actions.yaml:
+		on:
+		  repository_dispatch:
+		    types: [build]
+			
+	We will get 404 error here:
+		if we need to perform a post request like that we need to have some authorization.
+			for that we need to generate github token
+		In github:
+			settings --> Developer Settings --> Personal access Token --> Note(repo dispatch) --> select repo options
+				you will get secret
+				In postman:
+					Authorization --> Basic Auth --> Enter the secret in password
+					Send
+						You will get 204: no content
+	After pushing the changes to github:
+		Whenever you send post request your workflow will be triggered
+		
+		
+Filtering Workflow by Branches, Tags and Paths
+	Imagine you have some repo and on this repo you have master branch and develop branch 
+		In workflow you need to test, build and deploy your app when you push to master
+		But when you push anything to develop branch you workflow will also get triggered
+			So to avaoid it we use filtering
+			
+	on:
+	  push:
+		branches:
+		  - master
+	  pull-request:
+	  pull:
+		--> it can be both 
+	
+	    branches:
+		  - master #it will trigger when you push/pull on master branch
+		  - 'feature/*' # it will trigger when name matches to feature/featA, feature/featB, feature/featC
+		                # it will not match feature/feat/feata
+							the * does not match / sign
+		  - 'feature/**' # it will match
+		  - ! --> it will ignore the branches 
+				eg: '!feature/featA'
+				
+		tags:
+		  we can have tags similar to branches 
+		  we cannot use tags and tags-ignore at the same time
+		  
+	    branches-ignore:
+		  it will run on all branches except the branches stated inside this
+		  We cnnot use branches and branches-ignore at the same time
+		  
+	    paths:
+		  - 'pattern'
+		  - '**.js' --> it will run whenever we push javascript files 
+		  we cannot use paths and paths-ignore at the same time
+		  
+	eg:
+	on:
+	  push:
+	    branches:
+		  - master
+		  - "feature/*"
+		  - "feature/**"
+		  - "!feature/featC"
+		tags:
+		  - v1.*
+		paths:
+		  - ""
+		  
+Default and Custom Environment Variables:
+	echo "HOME: ${HOME}"
+	echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
+	echo "GITHUB_ACTION: ${GITHuB_ACTION}"
+	echo "GITHUB_ACTIONS: ${GITHuB_ACTIONS}"
+	echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
+	echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+	echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+	echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+	echo "GITHUB_SHA: ${GITHUB_SHA}"
+		commit id
+	echo "GITHUB_REF: ${GITHUB_REF}"
+	echo "WF_ENV: ${WORKFLOW_ENV}"
+	
+	env:
+	  env_name: env_value
+	
+	run:
+	  echo " ${env_name} "
+
+
+Encryting Environment Variables:
+	goto setting >> secrets
+		create a secret
+	
+	env:
+	  env_name: {{ secrets.secret_name }}
+	  
+dockerhub token --> dckr_pat_BTxib66Y_A_MQWIlYpT-ggIQk9o
+  
+Using GITHUB_TOKEN secret for authentication:
+	actions/labeler@v2 --> add labels to pull request to your repo
+	For Github action to do something with your repository it needs some authentication
+		
+	
